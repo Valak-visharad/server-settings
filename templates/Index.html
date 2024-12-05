@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vilakshan's Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF6F0; /* Light orange background */
+            color: #333;
+        }
+        header {
+            background-color: #FF6F00; /* Bright orange */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            border-bottom: 5px solid #FF4500; /* Darker orange border */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 260px; /* Adjusted width for better mobile fit */
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border-left: 5px solid #FF6F00; /* Orange border */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card button {
+            background-color: #FF6F00; /* Bright orange */
+            color: white;
+            border: none;
+            padding: 12px 25px; /* Increased padding for a better mobile feel */
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .card button:hover {
+            background-color: #FF4500; /* Darker orange on hover */
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px; /* Less padding for mobile */
+            }
+            .card {
+                width: 90%;
+                max-width: 320px; /* Slightly larger card on mobile */
+                margin: 10px 0; /* Adjusted margin for better spacing */
+            }
+            header {
+                font-size: 22px; /* Slightly smaller font size for mobile */
+                padding: 15px;
+            }
+            footer {
+                font-size: 14px; /* Smaller font size for footer on mobile */
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>  
+
+<header>
+    Welcome Mr. Vilakshan
+</header>
+
+<div class="container">
+    <div class="card">
+        <h3>Power Saver Mode</h3>
+        <p>Turn on power saver mode to save energy.</p>
+        <button onclick="sendCommand('powersave')">Activate Power Saver</button>
+    </div>
+    <div class="card">
+        <h3>Normal Power Mode</h3>
+        <p>Switch back to normal power mode.</p>
+        <button onclick="sendCommand('normal')">Activate Normal Mode</button>
+    </div>
+    <div class="card">
+        <h3>Start Jupyter Server</h3>
+        <p>Turn on the Jupyter server and switch to normal power mode.</p>
+        <button onclick="sendCommand('jupyter')">Start Jupyter</button>
+    </div>
+    <div class="card">
+        <h3>Shutdown Server</h3>
+        <p>Shutdown the server if you're done working.</p>
+        <button onclick="sendCommand('shutdown')">Shutdown Server</button>
+    </div>
+</div>
+
+<footer>
+    &copy; 2024 Vilakshan's Dashboard
+</footer>
+
+<script>
+    function sendCommand(command) {
+        fetch(`/command/${command}`)
+            .then(response => response.json())
+            .then(data => alert(data.message))
+            .catch(error => alert('Error: ' + error));
+    }
+</script>
+
+</body>
+</html>
