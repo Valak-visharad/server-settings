@@ -1056,8 +1056,7 @@ c.ServerApp.allow_remote_access = True
 
 ## The directory to use for notebooks and kernels.
 #  Default: ''
-#c.ServerApp.root_dir = 'C:\\Users\\enigma\\Documents\\server'
-c.ServerApp.root_dir = "/mnt/c/Users/enigma/Documents/server"
+#c.ServerApp.root_dir = ''
 
 ## The session manager class to use.
 #  Default: 'builtins.object'

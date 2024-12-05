@@ -5,9 +5,9 @@ import subprocess
 app = Flask(__name__)
 
 # Correctly formatted paths to batch files using double backslashes or forward slashes
-powersave_script = r'cmd.exe /c "C:\\Users\\enigma\\Documents\\server settings\\power_saver_mode.bat"'
-normal_mode_script = r'cmd.exe /c "C:\\Users\\enigma\\Documents\\server settings\\normal_mode.bat"'
-jupyter_command = r'/home/enigma/anaconda3/bin/jupyter lab'
+powersave_script = r'cmd.exe /c "power_saver_mode.bat"'
+normal_mode_script = r'cmd.exe /c "normal_mode.bat"'
+jupyter_command = r'jupyter lab'
 jupyter_shutdown = r'pkill -f jupyter'
 
 @app.route('/')
